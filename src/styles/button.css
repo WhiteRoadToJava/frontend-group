@@ -1,0 +1,25 @@
+.btn {
+  padding: 1.3rem 3rem;
+  border: 2px solid black;
+  border-radius: 50px;
+  background: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.auth {
+  background-color: black;
+  color: white;
+  padding: 10px 4rem;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.auth:hover {
+  background-color: rgb(62, 62, 63);
+  box-shadow: 0 0 8px rgba(107, 114, 128, 0.5);
+  transform: translateY(-2px);
+}

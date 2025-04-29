@@ -1,0 +1,39 @@
+.nav-bar {
+  background-color: #f2f2f2;
+  max-height: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 50px 1rem 50px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.left {
+  display: flex;
+  gap: 3rem;
+}
+
+.email {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+span {
+  padding: 0px 10px 0px 0px;
+}
