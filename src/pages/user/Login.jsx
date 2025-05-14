@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {useAuth} from "../hooks/useAuth";
-import Button from "../components/Button";
-import "../styles/login.css";
+import { useAuth } from "../../hooks/useAuth";
+import Button from "../../components/Button";
+import "../../styles/auth.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -24,38 +24,30 @@ const Login = () => {
   };
 
   return (
-    <div class="login-container">
-    <h2>Login</h2>
-    <form id="loginForm" onSubmit={handleSubmit}>
-        <div class="form-group">
-            <label for="username">Username:</label>
+    <div className="container" style={{ width: "40rem", margin: "2rem" }}>
+      <h2>Login</h2>
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-
           />
         </div>
         <div className="form-group">
-            <label for="password">Password:</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
-            id="password"
-            name="password"
-            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          
           />
         </div>
-        <button type="submit">Log In</button>
-        <div id="errorMessage" class="error-message"></div>
-    </form>
-</div>
-    
+        <div className="button">
+          <Button text="Login" type="submit" variant="auth" />
+        </div>
+      </form>
+    </div>
   );
 };
 

@@ -1,8 +1,12 @@
 import * as React from "react";
-const Logo = () => (
+import img from "../images/logo.png"
 
-  <div style={{ fontSize: "45", color:"black" }}>
-    Ajar
-</div>
-);
+const Logo = () => {
+  
+  return (
+    <div>
+      <img style={{ height:"40px"}} src={img} />
+    </div>
+  )
+};
 export default Logo;

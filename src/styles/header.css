@@ -12,6 +12,7 @@
   letter-spacing: 0.5px;
 }
 
+
 ul {
   list-style: none;
   display: flex;
@@ -19,7 +20,7 @@ ul {
 }
 
 .logout {
-  background-color: black;
+  background-color: green;
   color: white;
   border-radius: 5px;
   border: none;

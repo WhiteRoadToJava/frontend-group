@@ -1,6 +1,6 @@
 .btn {
   padding: 1.3rem 3rem;
-  border: 2px solid black;
+  border: 2px solid green;
   border-radius: 50px;
   background: none;
   font-size: 20px;
@@ -9,7 +9,7 @@
 }
 
 .auth {
-  background-color: black;
+  background-color: green;
   color: white;
   padding: 10px 4rem;
   width: 100%;

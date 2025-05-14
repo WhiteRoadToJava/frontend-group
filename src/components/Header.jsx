@@ -34,7 +34,7 @@ const Header = () => {
           </li>
           <li>
             <Link className="link" to="/">
-              New Arrivals
+              New Place
             </Link>
           </li>
           <li>
