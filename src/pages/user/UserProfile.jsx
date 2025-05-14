@@ -5,9 +5,10 @@ import "../../styles/profile.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
 const UserProfile = () => {
-  const [user, setUser] = useState({
+  const { logout, currentUser } = useAuth();
+
+  /*  const [user, setUser] = useState({
     address: "",
     email: "",
     firstName: "",
@@ -15,8 +16,8 @@ const UserProfile = () => {
     phone: "",
     created_at: "",
   });
-
-  useEffect(() => {
+ */
+  /*   useEffect(() => {
     loadUser();
   }, []);
 
@@ -24,11 +25,10 @@ const UserProfile = () => {
     const response = await getUser();
     setUser(response);
     console.log(response);
-  };
+  }; */
 
   // vi behöver logout funktionen från context
   // vi behöver currentUser så vet om det finns nån user inloggad + kolla rollen på user
-  const { logout } = useAuth();
 
   // logga ut funktion
   const handleLogout = async () => {
@@ -60,11 +60,13 @@ const UserProfile = () => {
                   width="150"
                 />
                 <div className="mt-3">
-                  <h3>{user.userName}</h3>
+                  <h3>{currentUser.userName}</h3>
                   <Link className="link" to="/newplace">
                     New Place
                   </Link>
-                  <Link className="link" to="/viewplacesbyowner">My Places</Link>
+                  <Link className="link" to="/viewplacesbyowner">
+                    My Places
+                  </Link>
                   <a href="">Suppor</a>
                   <a href="">Setting</a>
                   <a href="">Signout</a>
@@ -81,7 +83,7 @@ const UserProfile = () => {
                     <h5>Full Name</h5>
                   </div>
                   <div className="col-md-9 text-secondary">
-                    {user.firstName} {user.lastName}
+                    {currentUser.firstName} {currentUser.lastName}
                   </div>
                 </div>
                 <hr />
@@ -89,29 +91,35 @@ const UserProfile = () => {
                   <div className="col-md-3">
                     <h5>Email</h5>
                   </div>
-                  <div className="col-md-9 text-secondary">{user.email}</div>
+                  <div className="col-md-9 text-secondary">
+                    {currentUser.email}
+                  </div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-md-3">
                     <h5>Phone</h5>
                   </div>
-                  <div className="col-md-9 text-secondary">{user.phone}</div>
+                  <div className="col-md-9 text-secondary">
+                    {currentUser.phone}
+                  </div>
                 </div>
                 <div className="row">
                   <div className="col-md-3">
                     <h5>Address</h5>
                   </div>
-                  <div className="col-md-9 text-secondary">{user.address}</div>
+                  <div className="col-md-9 text-secondary">
+                    {currentUser.address}
+                  </div>
                 </div>
-                <div className="row">
+                {/*   <div className="row">
                   <div className="col-md-3">
                     <h5>Date:</h5>
                   </div>
                   <div className="col-md-9 text-secondary">
-                    {user.created_at}
+                    {currentUser.created_at}
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="card mb-3 content">

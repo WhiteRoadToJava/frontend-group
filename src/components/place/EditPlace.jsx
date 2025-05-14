@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const EditPlace = () => {
-  
-}
+  return <div>EDIT PLACE</div>;
+};
 
-export default EditPlace
+export default EditPlace;

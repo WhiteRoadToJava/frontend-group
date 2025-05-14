@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { getPlacesByOwner } from "../../api/placeService";
 import EditPlace from "../../components/place/EditPlace";
@@ -36,11 +36,11 @@ const ViewPlacesByOwzner = () => {
     console.log(setPlaces);
   };
 
-
-   const deletePlace = async(id) => {
-      await axios.delete(`http://localhost:8080/deleteUser/${id}`);
-      loadUsers();
-    };
+  const deletePlace = async (id) => {
+    await axios.delete(`http://localhost:8080/places/deleteplace/${id}`);
+    console.log("Place delete");
+    // loadUsers();
+  };
 
   return (
     <div className="container">
@@ -56,33 +56,40 @@ const ViewPlacesByOwzner = () => {
               <th scope="col">Price</th>
             </tr>
           </thead>
-          {places.map((place, index) => (
-            <tr>
-              <th scope="row" key={index}>
-                {index + 1}
-              </th>
+          {places.map((place) => (
+            <tr key={place.id}>
+              <th scope="row">{place.id}</th>
               <td>{place.name}</td>
               <td>{place.description}</td>
               <td>
                 {place.steet}, {place.postalCode},{place.city}
-                  </td>
-                  <td>{place.gestt}</td>
-                  <td>{place.bedroom}</td>
-                  <td>{place.price} sek</td>
-                           <td>
-            <Link
-                    className="btn btn-primary mx-2"
-                    to={`/viewplace/${place.id}`}
-                  >View</Link>
-                <Link className='btn busetn-outline-primary mx-2'
-                to={`/editplace/${place.id}`}>Edit</Link>
-                <Link className='btn btn-danger mx-2'
-                to={deletePlace(place.id)}
-                >Delete</Link>
-            </td>
+              </td>
+              <td>{place.gestt}</td>
+              <td>{place.bedroom}</td>
+              <td>{place.price} sek</td>
+              <td>
+                <Link
+                  className="btn btn-primary mx-2"
+                  to={`/viewplace/${place.id}`}
+                >
+                  View
+                </Link>
+                <Link
+                  className="btn busetn-outline-primary mx-2"
+                  to={`/editplace/${place.id}`}
+                >
+                  Edit
+                </Link>
+                {/*  <Link
+                  className="btn btn-danger mx-2"
+                  to={deletePlace(place.id)}
+                >
+                  Delete
+                </Link> */}
+                {/*   <button onClick={deletePlace(place.id)}>Delete</button> */}
+              </td>
             </tr>
-          ))};
-          ;
+          ))}
         </table>
       </div>
     </div>

@@ -40,6 +40,7 @@ export const AuthProvider = ({ children }) => {
    * genom att kontrollera JWT-token som lagras i HTTP-only cookies
    */
   const checkAuthStatus = async () => {
+    setLoading(true);
     try {
       // kalla på backend end point som validerar JWT
       const response = await api.get("/auth/check");
@@ -70,7 +71,7 @@ export const AuthProvider = ({ children }) => {
       // uppdatera user state med returnerad data
       setCurrentUser(response.data);
       console.log("Response: " + JSON.stringify(response.data));
-      
+
       return response.data;
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
@@ -86,7 +87,15 @@ export const AuthProvider = ({ children }) => {
    * @returns {Object} Registration response data
    * @throws {Error} If registration fails
    */
-  const register = async (username, password, firstName, lastName, email, phone, address) => {
+  const register = async (
+    username,
+    password,
+    firstName,
+    lastName,
+    email,
+    phone,
+    address
+  ) => {
     try {
       const response = await api.post("/auth/register", {
         username,

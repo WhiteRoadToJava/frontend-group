@@ -36,7 +36,7 @@ const NewpPlace = () => {
         bedroom,
         price
       );
-      navigate("/");
+      navigate("/profile");
     } catch (err) {
       console.log("Error: " + err);
     }
