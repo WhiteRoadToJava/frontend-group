@@ -13,7 +13,8 @@ const NewPlace = () => {
   const [country, setCountry] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-  const [image, setImage] = useState();
+  const [image, setImage] = useState("");
+  const [availabilityPeriods, setAvailabilityPeriods] = useState([{ startDate: '', endDate: '' }]); // Start with one availability period
   const [gestt, setGestt] = useState("");
   const [bedroom, setBedroom] = useState("");
   const [price, setPrice] = useState("");
@@ -34,6 +35,9 @@ const NewPlace = () => {
         latitude,
         longitude,
         image,
+        availabilityPeriods.filter(
+        (period) => period.startDate !== '' && period.endDate !== ''
+        ), // Filter out incomplete periods
         gestt,
         bedroom,
         price
@@ -42,6 +46,24 @@ const NewPlace = () => {
     } catch (err) {
       console.log("Error: " + err);
     }
+  };
+
+  
+  const handleAvailabilityChange = (index, event) => {
+    const { name, value } = event.target;
+    const newAvailabilityPeriods = [...availabilityPeriods];
+    newAvailabilityPeriods[index][name] = value;
+    setAvailabilityPeriods(newAvailabilityPeriods);
+  };
+
+  const addAvailabilityPeriod = () => {
+    setAvailabilityPeriods([...availabilityPeriods, { startDate: '', endDate: '' }]);
+  };
+
+  const removeAvailabilityPeriod = (index) => {
+    const newAvailabilityPeriods = [...availabilityPeriods];
+    newAvailabilityPeriods.splice(index, 1);
+    setAvailabilityPeriods(newAvailabilityPeriods);
   };
   return (
     <div className="container" style={{ width: "40rem", margin: "2rem" }}>
@@ -144,8 +166,40 @@ const NewPlace = () => {
           />
         </div>
 
+
+         <div className="form-group">
+        <label htmlFor="Availability">Availability Periods:</label>
+        {availabilityPeriods.map((period, index) => (
+          <div key={index}>
+            <label>Start Date:</label>
+            <input
+              type="date"
+              name="startDate"
+              value={period.startDate}
+              onChange={(e) => handleAvailabilityChange(index, e)}
+            />
+            <label>End Date:</label>
+            <input
+              type="date"
+              name="endDate"
+              value={period.endDate}
+              onChange={(e) => handleAvailabilityChange(index, e)}
+            />
+            {availabilityPeriods.length > 1 && (
+              <button type="button" onClick={() => removeAvailabilityPeriod(index)}>
+                Remove
+              </button>
+            )}
+          </div>
+        ))}
+        <button type="button" onClick={addAvailabilityPeriod}>
+          Add Availability Period
+        </button>
+      </div>
+
+
         <div className="button">
-          <Button text="Register" type="submit" variant="auth" />
+          <Button text="Add New Place" type="submit" variant="auth" />
         </div>
       </form>
     </div>

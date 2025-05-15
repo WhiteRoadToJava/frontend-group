@@ -22,7 +22,7 @@ export const getPlacesByOwner = async () => {
   return response.data;
 }
 
-export const newplace = async (name, description, street, postalCode, city, country, latitude, longitude, image, gest, bedrooms, price) => {
+export const newplace = async (name, description, street, postalCode, city, country, latitude, longitude, image, availabilityPeriods, gest, bedrooms, price) => {
   try {
     const response = await api.post("/places/newplace", {
       name,
@@ -34,6 +34,7 @@ export const newplace = async (name, description, street, postalCode, city, coun
       latitude,
       longitude,
       image,
+      availabilityPeriods,
       gest,
       bedrooms,
       price
@@ -45,9 +46,9 @@ export const newplace = async (name, description, street, postalCode, city, coun
 };
 
 
-export const updatePlace = async (id, name, description, street, postalCode, city, country,image, gest, bedrooms, price) => {
+export const updatePlace = async (id, name, description, street, postalCode, city, country, image, gest, bedrooms, price) => {
   const response = await api.put(`/viewplaces/updateplace/${id}`, {
-        name,
+    name,
     description,
     street,
     postalCode,

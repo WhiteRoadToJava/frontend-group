@@ -56,7 +56,8 @@ const ViewPlacesByOwner = () => {
             </tr>
           </thead>
           <tbody>
-     {places.map((place) => (
+            {places.length > 0 ? (
+              places.map((place) => (
             <tr key={place.id}>
               <th scope="row">{place.name}</th>
               <td>{place.description}</td>
@@ -80,7 +81,12 @@ const ViewPlacesByOwner = () => {
            
               </td>
             </tr>
-          ))}
+              ))
+            ) : (
+              <div>No places this user has added</div>
+            )
+            }
+            
           </tbody>   
         </table>
       </div>

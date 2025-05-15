@@ -159,6 +159,7 @@ const EditPlace = () => {
             className="form-control"
             id="image"
             name="image"
+            value={place.image}
             onChange={handleInputChange} // تغيير إلى معالج ملفات مختلف
           />
         </div>
@@ -202,6 +203,8 @@ const EditPlace = () => {
             required
           />
         </div>
+
+        
 
         <button type="submit" className="btn btn-outline-warning mx-2">
           Update Place
