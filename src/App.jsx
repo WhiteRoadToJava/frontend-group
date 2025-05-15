@@ -13,8 +13,8 @@ import Header from "./components/Header";
 import Aboute from "./pages/Aboute";
 import UserProfile from "./pages/user/UserProfile";
 import AdminDashboard1 from "./pages/admin/AdminDashboard1";
-import NewpPlace from "./pages/place/NewpPlace";
-import ViewPlacesByOwzner from "./pages/place/ViewPlacesByOwzner";
+import NewPlace from "./pages/place/NewPlace";
+import ViewPlacesByOwzner from "./pages/place/ViewPlacesByOwner";
 import EditPlace from "./components/place/EditPlace";
 import ViewPlace from "./components/place/ViewPlace";
 
@@ -37,13 +37,17 @@ function App() {
 
               {/* protected routes for all authenticated users */}
               <Route element={<ProtectedRoute />}>
-                <Route path="/profile" element={<UserProfile />} /> 
-                <Route path="/editUser" element={<EditUser />} /> 
+                <Route path="/profile" element={<UserProfile />} />
+                <Route path="/editUser" element={<EditUser />} />
 
-                <Route path="/newplace" element={<NewpPlace />} /> 
-                <Route path="/viewplacesbyowner" element={<ViewPlacesByOwzner />} /> 
-                <Route path="/editplace/:id" element={<EditPlace />} /> 
-                <Route exact path="/viewplace" element={<ViewPlace />} />
+                
+                <Route
+                  path="/viewplacesbyowner"
+                  element={<ViewPlacesByOwzner />}
+                />
+                <Route path="/editplace/:id" element={<EditPlace />} />
+                <Route exact path="/viewplace/:id" element={<ViewPlace />} />
+                <Route path="/newplace" element={<NewPlace />} />
               </Route>
 
               {/* protected routes for admins only */}

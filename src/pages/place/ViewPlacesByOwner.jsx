@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { getPlacesByOwner } from "../../api/placeService";
-import EditPlace from "../../components/place/EditPlace";
-import ViewPlace from "../../components/place/ViewPlace";
+
 import axios from "axios";
-const ViewPlacesByOwzner = () => {
+const ViewPlacesByOwner = () => {
   const [places, setPlaces] = useState([]);
 
   let navigate = useNavigate();
@@ -56,44 +55,36 @@ const ViewPlacesByOwzner = () => {
               <th scope="col">Price</th>
             </tr>
           </thead>
-          {places.map((place) => (
+          <tbody>
+     {places.map((place) => (
             <tr key={place.id}>
-              <th scope="row">{place.id}</th>
-              <td>{place.name}</td>
+              <th scope="row">{place.name}</th>
               <td>{place.description}</td>
-              <td>
-                {place.steet}, {place.postalCode},{place.city}
-              </td>
+              <td>{place.steet}, {place.postalCode},{place.city}</td>
               <td>{place.gestt}</td>
               <td>{place.bedroom}</td>
               <td>{place.price} sek</td>
               <td>
                 <Link
-                  className="btn btn-primary mx-2"
+                  className="btn btn-outline-primary mx-2"
                   to={`/viewplace/${place.id}`}
                 >
                   View
                 </Link>
                 <Link
-                  className="btn busetn-outline-primary mx-2"
+                  className="btn btn-outline-warning mx-2"
                   to={`/editplace/${place.id}`}
                 >
                   Edit
-                </Link>
-                {/*  <Link
-                  className="btn btn-danger mx-2"
-                  to={deletePlace(place.id)}
-                >
-                  Delete
-                </Link> */}
-                {/*   <button onClick={deletePlace(place.id)}>Delete</button> */}
+           </Link>
+           
               </td>
             </tr>
           ))}
+          </tbody>   
         </table>
       </div>
     </div>
   );
 };
-
-export default ViewPlacesByOwzner;
+export default ViewPlacesByOwner;

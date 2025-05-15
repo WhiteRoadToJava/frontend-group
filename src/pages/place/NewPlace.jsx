@@ -1,10 +1,10 @@
-import React from "react";
+
 import { useState } from "react";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { newplace } from "../../api/placeService";
 
-const NewpPlace = () => {
+const NewPlace = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [street, setStreet] = useState("");
@@ -13,6 +13,7 @@ const NewpPlace = () => {
   const [country, setCountry] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
+  const [image, setImage] = useState();
   const [gestt, setGestt] = useState("");
   const [bedroom, setBedroom] = useState("");
   const [price, setPrice] = useState("");
@@ -32,6 +33,7 @@ const NewpPlace = () => {
         country,
         latitude,
         longitude,
+        image,
         gestt,
         bedroom,
         price
@@ -72,7 +74,7 @@ const NewpPlace = () => {
         <div className="form-group">
           <label htmlFor="postalcode">Postal-Code</label>
           <input
-            type="text"
+            type="number"
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
           />
@@ -116,6 +118,14 @@ const NewpPlace = () => {
             value={gestt}
             onChange={(e) => setGestt(e.target.value)}
           />
+           </div>
+          <div className="form-group">
+          <label htmlFor="image">image URL</label>
+          <input
+            type="text"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="bedroom">Bedrooms</label>
@@ -142,4 +152,4 @@ const NewpPlace = () => {
   );
 };
 
-export default NewpPlace;
+export default NewPlace;

@@ -8,16 +8,21 @@ export const getAllProducts = async () => {
 
 // hämta en produkt med id
 export const getPlaceById = async (id) => {
-  const response = await api.get(`/places/findPlaceById/id`);
-  return response.data;
+    const response = await api.get(`/viewplaces/getplacebyid/${id}`);
+    return response.data;
 };
+
+export const deletePlace = async (id) => {
+  const response = await api.delete(`/places/deleteplace/${id}`);
+  return response;
+}
 
 export const getPlacesByOwner = async () => {
   const response = await api.get("/places/getplacesbyowner");
   return response.data;
 }
 
-export const newplace = async (name, description, street, postalCode, city, country, latitude, longitude, gest, bedrooms, price) => {
+export const newplace = async (name, description, street, postalCode, city, country, latitude, longitude, image, gest, bedrooms, price) => {
   try {
     const response = await api.post("/places/newplace", {
       name,
@@ -28,6 +33,7 @@ export const newplace = async (name, description, street, postalCode, city, coun
       country,
       latitude,
       longitude,
+      image,
       gest,
       bedrooms,
       price
@@ -37,3 +43,22 @@ export const newplace = async (name, description, street, postalCode, city, coun
     console.log("Error fetchinng newUser: ", err);
   }
 };
+
+
+export const updatePlace = async (id, name, description, street, postalCode, city, country,image, gest, bedrooms, price) => {
+  const response = await api.put(`/viewplaces/updateplace/${id}`, {
+        name,
+    description,
+    street,
+    postalCode,
+    city,
+    country,
+    image,
+    gest,
+    bedrooms,
+    price,
+  });
+  return response.data;
+}
+
+
