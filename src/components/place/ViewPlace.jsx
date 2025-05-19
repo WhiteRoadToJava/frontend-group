@@ -2,6 +2,7 @@ import  { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { deletePlace, getPlaceById, } from "../../api/placeService";
+import NewBooking from "../booking/NewBooking";
 
 
 const ViewPlace = () => {
@@ -28,7 +29,7 @@ const ViewPlace = () => {
     }
   };
   {
-    /* thiis method is t*/
+    /* this method is t*/
   }
   const loadPlace1 = async () => {
     const response = await axios.get(
@@ -95,11 +96,16 @@ const ViewPlace = () => {
       <div className="button">
         <button className="btn btn-outline-danger mx-2 " onClick={deletePlaceByOwner}>Delete</button>
         <Link className="btn btn-outline-warning mx-2 " to={`/editplace/${id}`}>Update</Link>
+
+        
+      {/* إضافة نموذج الحجز هنا ليتم عرضه دائمًا */}
+      <NewBooking placeId={id} />
       </div>
       <div className="button">
         <Link className="btn btn-outline-primary mx-2" to="/profile">
           Back To My Profile
         </Link>
+
       </div>
     </div>
   );

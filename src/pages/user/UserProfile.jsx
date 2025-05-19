@@ -8,27 +8,6 @@ import { Link } from "react-router-dom";
 const UserProfile = () => {
   const { logout, currentUser } = useAuth();
 
-  /*  const [user, setUser] = useState({
-    address: "",
-    email: "",
-    firstName: "",
-    lastName: "",
-    phone: "",
-    created_at: "",
-  });
- */
-  /*   useEffect(() => {
-    loadUser();
-  }, []);
-
-  const loadUser = async () => {
-    const response = await getUser();
-    setUser(response);
-    console.log(response);
-  }; */
-
-  // vi behöver logout funktionen från context
-  // vi behöver currentUser så vet om det finns nån user inloggad + kolla rollen på user
 
   // logga ut funktion
   const handleLogout = async () => {
@@ -67,7 +46,7 @@ const UserProfile = () => {
                   <Link className="link" to="/viewplacesbyowner">
                     My Places
                   </Link>
-                  <a href="">Suppor</a>
+                  <Link className="link" to="/getcustomerbookings">My Bookings</Link>
                   <a href="">Setting</a>
                   <a href="">Signout</a>
                 </div>
