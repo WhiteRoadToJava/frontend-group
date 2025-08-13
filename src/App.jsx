@@ -37,6 +37,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/unauthorized" element={<Unauthorized />} />
               <Route path="/aboute" element={<Aboute />} />
+              <Route path="/contact" element={<ContactForm />} />
 
               {/* protected routes for all authenticated users */}
               <Route element={<ProtectedRoute />}>
